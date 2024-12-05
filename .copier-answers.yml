@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 3804aee
+_src_path: https://github.com/maurosilber/python-lib-template
+github_username: hgrecco
+license: MIT
+min_python_version: '3.11'
+platforms:
+- osx-arm64
+- linux-64
+- win-64
+project_description: PLS utilities
+project_name: hitec-pls
+project_slug: hitec_pls
+your_email: hernan.grecco@gmail.com
+your_name: Hernán E. Grecco

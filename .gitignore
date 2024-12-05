@@ -1,0 +1,13 @@
+# ignore all hidden files
+.*
+# except
+!.gitignore
+!.gitattributes
+!.github/
+!.pre-commit-config.yaml
+!.copier-answers.yml
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
