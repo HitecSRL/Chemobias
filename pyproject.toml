@@ -1,18 +1,26 @@
 [project]
-name = "hitec-pls"
+name = "Chemobias"
 description = "PLS utilities"
 dynamic = ["version"]
 authors = [{ name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" }]
 readme = { file = "README.md", content-type = "text/markdown" }
 license = "MIT"
 classifiers = ["Programming Language :: Python :: 3"]
-requires-python = ">=3.11"
-dependencies = []
+requires-python = ">=3.12"
+dependencies = [
+  "numpy >=2.1.1",
+  "scikit-learn >=1.5.2",
+  "pandas >=2.2.3",
+  "matplotlib == 3.9.2",
+  "jupyter >=1.1.1",
+  "openpyxl >=3.1.5",
+  "ipykernel >=6.29.5",
+]
 
 [project.urls]
-Homepage = "https://github.com/hgrecco/hitec-pls"
-Issues = "https://github.com/hgrecco/hitec-pls/issues"
-Documentation = "https://hgrecco.github.io/hitec-pls"
+Homepage = "https://github.com/HitecSRL/Chemobias"
+Issues = "https://github.com/HitecSRL/Chemobias/issues"
+Documentation = "https://HitecSRL.github.io/Chemobias"
 
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
@@ -41,18 +49,18 @@ platforms = ['osx-arm64', 'linux-64', 'win-64']
 [tool.pixi.tasks]
 
 [tool.pixi.dependencies]
-python = ">=3.11"
+python = ">=3.12"
 
 [tool.pixi.pypi-dependencies]
-hitec-pls = { path = ".", editable = true }
+Chemobias = { path = ".", editable = true }
 
 [tool.pixi.environments]
 lint = { features = ["lint"], no-default-feature = true }
 build = { features = ["build"], no-default-feature = true }
 test = { features = ["test"], solve-group = "default" }
-test-py311 = ["test", "py311"]
 test-py312 = ["test", "py312"]
 test-py313 = ["test", "py313"]
+typecheck = { features = ["typecheck"], solve-group = "default" }
 
 [tool.pixi.feature.lint.dependencies]
 pre-commit = "*"
@@ -79,11 +87,16 @@ pytest = "*"
 [tool.pixi.feature.test.tasks]
 test = "pytest --doctest-modules"
 
-[tool.pixi.feature.py311.dependencies]
-python = "3.11.*"
-
 [tool.pixi.feature.py312.dependencies]
 python = "3.12.*"
 
 [tool.pixi.feature.py313.dependencies]
 python = "3.13.*"
+
+[tool.pixi.feature.typecheck.dependencies]
+mypy = "*"
+pip = "*"
+
+[tool.pixi.feature.typecheck.tasks]
+typecheck = "mypy ."
+typecheck-update = "mypy --install-types ."
